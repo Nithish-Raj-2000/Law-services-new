@@ -1,0 +1,578 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | STACKLY Law Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .input.error { border: 2px solid #e63946; }
+    /* Select dropdown text/bg in both themes */
+    select.input { color: var(--text-primary); background: var(--bg-elevated); }
+    select.input option { background: var(--bg-surface); color: var(--text-primary); }
+    [data-theme="light"] select.input { background: #fff; color: #0a0e1a; }
+    [data-theme="light"] select.input option { background: #fff; color: #0a0e1a; }
+    .contact-page-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 3rem 0;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .contact-page-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .contact-info-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-info-card {
+      display: flex;
+      gap: 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .contact-info-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-500);
+      box-shadow: 0 8px 24px rgba(201,168,76,.12);
+    }
+    .contact-info-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(201,168,76,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-400);
+    }
+    .contact-info-content h3 {
+      font-size: .95rem;
+      font-weight: 600;
+      margin-bottom: .2rem;
+      color: var(--text-primary);
+    }
+    .contact-info-content p {
+      font-size: .875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .contact-map-wrap {
+      margin-top: 1rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+    .contact-map-wrap iframe {
+      width: 100%;
+      height: 280px;
+      border: 0;
+      display: block;
+    }
+    .contact-form-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      border: 1px solid var(--border-subtle);
+    }
+    .contact-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .contact-form-row { grid-template-columns: 1fr; }
+    }
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .radio-option input[type="radio"] { cursor: pointer; accent-color: var(--gold-500); }
+    .radio-option label { margin: 0; cursor: pointer; font-size: .9rem; font-weight: 400; color: var(--text-secondary); }
+    .offices-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .office-card-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .office-card-item:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-500);
+      box-shadow: 0 12px 32px rgba(201,168,76,.15);
+    }
+    .office-card-item h3 {
+      font-size: 1.15rem;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      margin-bottom: .75rem;
+      color: var(--text-primary);
+    }
+    .office-card-item .office-flag {
+      font-size: 2rem;
+      margin-bottom: .75rem;
+    }
+    .office-card-item p {
+      color: var(--text-secondary);
+      font-size: .875rem;
+      line-height: 1.6;
+      margin-bottom: .5rem;
+    }
+    .office-phone {
+      font-weight: 600;
+      color: var(--gold-400) !important;
+      margin-top: .75rem !important;
+    }
+    .office-hours {
+      font-size: .8rem !important;
+      color: var(--text-muted) !important;
+    }
+    .hero-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      margin: 1.5rem 0 2.5rem;
+    }
+  </style>
+</head>
+<body data-page="contact">
+  <div class="preloader" aria-hidden="true"><div class="preloader-ring"></div></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html" aria-label="STACKLY home">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="../Images/logo.webp" alt="STACKLY Logo" width="120" height="80" loading="eager">
+        </span>
+        <!-- <span class="brand-copy"><span class="brand-name">STACKLY</span><span class="brand-tagline">Law Services</span></span> -->
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./practice-areas.html">Practice Areas</a>
+        <a href="./case-studies.html">Case Studies</a>
+        <a href="./team.html">Attorneys</a>
+        <a href="./pricing.html">Pricing</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+        <a class="btn btn-secondary btn-sm" href="./login.html">Login</a>
+        <a class="btn btn-primary btn-sm" href="./signup.html">Sign Up</a>
+        <a class="btn btn-outline btn-sm" href="./contact.html">Book Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-eyebrow">Get In Touch</span>
+        <h1 class="hero-title">Contact STACKLY</h1>
+        <p class="hero-subtitle">Let's discuss how we can support your legal needs and drive success for your business.</p>
+      </div>
+    </section>
+
+    <!-- Hero Image -->
+    <div class="container">
+      <img src="https://images.pexels.com/photos/3760093/pexels-photo-3760093.jpeg?auto=compress&cs=tinysrgb&w=1200&fm=webp" alt="STACKLY Law Office" class="hero-img" loading="lazy">
+    </div>
+
+    <!-- Contact Grid -->
+    <section class="container">
+      <div class="contact-page-grid">
+        <!-- Left: Contact Info + Map -->
+        <div>
+          <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:.5rem">Contact Information</h2>
+          <p style="color:var(--text-secondary);margin-bottom:1.5rem">Reach out to our team. We're here to help with any legal matter.</p>
+
+          <div class="contact-info-stack">
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-info-content">
+                <h3>New York Office (HQ)</h3>
+                <p>500 Madison Avenue, New York, NY 10022, United States</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="contact-info-content">
+                <h3>Phone</h3>
+                <p><strong>Main:</strong> +1 (212) 555-0147 &nbsp;·&nbsp; <strong>International:</strong> +44 (20) 7946 0958</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div class="contact-info-content">
+                <h3>Email</h3>
+                <p><strong>General:</strong> hello@stacklylaw.com &nbsp;·&nbsp; <strong>Support:</strong> support@stacklylaw.com</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="contact-info-content">
+                <h3>Business Hours</h3>
+                <p><strong>Mon – Fri:</strong> 9:00 AM – 6:00 PM EST &nbsp;·&nbsp; <strong>Sat–Sun:</strong> By appointment</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- OpenStreetMap embed -->
+          <div class="contact-map-wrap">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0050%2C40.7450%2C-73.9350%2C40.7750&layer=mapnik&marker=40.7614%2C-73.9730"
+              allowfullscreen
+              title="STACKLY New York Office Location"
+              style="width:100%;height:280px;border:0;display:block"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="contact-form-card">
+          <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:1.5rem">Send Us a Message</h2>
+          <form id="contact-form" novalidate>
+            <div class="contact-form-row">
+              <div class="form-group">
+                <label class="form-label" for="first-name">First Name <span class="req">*</span></label>
+                <input class="input" type="text" id="first-name" name="first_name" placeholder="John" data-required autocomplete="given-name">
+                <p class="error-text"></p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="last-name">Last Name <span class="req">*</span></label>
+                <input class="input" type="text" id="last-name" name="last_name" placeholder="Doe" data-required autocomplete="family-name">
+                <p class="error-text"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address <span class="req">*</span></label>
+              <input class="input" type="email" id="contact-email" name="email" placeholder="john@company.com" data-required autocomplete="email">
+              <p class="error-text"></p>
+            </div>
+            <div class="contact-form-row">
+              <div class="form-group">
+                <label class="form-label" for="contact-phone">Phone Number</label>
+            <input
+    class="input"
+    type="tel"
+    id="contact-phone"
+    name="phone"
+    placeholder="+91 9876543210"
+    autocomplete="tel"
+    maxlength="16"
+/>
+                <p class="error-text"></p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contact-company">Company</label>
+                <input class="input" type="text" id="contact-company" name="company" placeholder="Acme Corp" autocomplete="organization">
+                <p class="error-text"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="practice-area">Practice Area</label>
+              <select class="input" id="practice-area" name="practice_area">
+                <option value="">Select a practice area...</option>
+                <option value="corporate">Corporate Law</option>
+                <option value="arbitration">International Arbitration</option>
+                <option value="litigation">Litigation</option>
+                <option value="compliance">Compliance &amp; Regulatory</option>
+                <option value="ma">Mergers &amp; Acquisitions</option>
+                <option value="data-privacy">Data Privacy</option>
+              </select>
+              <p class="error-text"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message <span class="req">*</span></label>
+              <textarea class="input" id="contact-message" name="message" rows="5" placeholder="Tell us about your legal needs..." data-required style="resize:vertical;min-height:120px"></textarea>
+              <p class="error-text"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="margin-bottom:.75rem;display:block">Preferred Contact Method</label>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" id="contact-by-email" name="contact_method" value="email" checked>
+                  <label for="contact-by-email">Email</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="contact-by-phone" name="contact_method" value="phone">
+                  <label for="contact-by-phone">Phone</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="contact-by-video" name="contact_method" value="video">
+                  <label for="contact-by-video">Video Call</label>
+                </div>
+              </div>
+            </div>
+            <label class="form-check" style="margin-bottom:.5rem">
+              <input type="checkbox" id="contact-privacy-agree" name="privacy_agree">
+              <span>I agree to the <a href="./privacy-policy.html">Privacy Policy</a> and Terms of Service</span>
+            </label>
+            <p class="error-text" id="contact-privacy-error"></p>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;margin-top:1rem;justify-content:center">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Offices -->
+    <section class="container" style="margin-top:3rem;padding-bottom:4rem">
+      <div class="section-header">
+        <span class="section-eyebrow">Worldwide Presence</span>
+        <h2 class="section-title">Our Global <span>Offices</span></h2>
+        <p class="section-sub">Four strategic offices serving clients across every major jurisdiction.</p>
+      </div>
+      <div class="offices-grid">
+        <div class="office-card-item">
+          <div class="office-flag">🇺🇸</div>
+          <h3>New York</h3>
+          <p>500 Madison Avenue<br>New York, NY 10022<br>United States</p>
+          <p class="office-phone">+1 (212) 555-0147</p>
+          <p class="office-hours">Mon–Fri: 9 AM–6 PM EST</p>
+        </div>
+        <div class="office-card-item">
+          <div class="office-flag">🇬🇧</div>
+          <h3>London</h3>
+          <p>30 St Mary Axe<br>London, EC3A 8BF<br>United Kingdom</p>
+          <p class="office-phone">+44 (20) 7946 0958</p>
+          <p class="office-hours">Mon–Fri: 9 AM–6 PM GMT</p>
+        </div>
+        <div class="office-card-item">
+          <div class="office-flag">🇸🇬</div>
+          <h3>Singapore</h3>
+          <p>10 Collyer Quay<br>Singapore 049315<br>Singapore</p>
+          <p class="office-phone">+65 6236 8888</p>
+          <p class="office-hours">Mon–Fri: 9 AM–6 PM SGT</p>
+        </div>
+        <div class="office-card-item">
+          <div class="office-flag">🇦🇪</div>
+          <h3>Dubai</h3>
+          <p>Burj Khalifa, Level 50<br>Sheikh Mohammed bin Rashid Blvd<br>Dubai, UAE</p>
+          <p class="office-phone">+971 (4) 242 8888</p>
+          <p class="office-hours">Sat–Wed: 9 AM–6 PM GST</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="../index.html" aria-label="STACKLY home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="../Images/logo.webp" alt="STACKLY Logo" width="120" height="80" loading="lazy">
+          </span>
+          <!-- <span class="brand-copy"><span class="brand-name">STACKLY</span><span class="brand-tagline">Law Services</span></span> -->
+        </a>
+        <p style="margin-top:1rem">Justice. Strategy. Results. STACKLY delivers global-standard legal services for businesses, founders, and high-stakes stakeholders.</p>
+        <div class="social-row">
+          <a href="./404.html" aria-label="LinkedIn"><span>in</span></a>
+          <a href="./404.html" aria-label="X"><span>X</span></a>
+          <a href="./404.html" aria-label="Instagram"><span>ig</span></a>
+        </div>
+      </div>
+      <div><h4>Firm</h4><ul><li><a href="../index.html">Home</a></li><li><a href="./about.html">About Us</a></li><li><a href="./practice-areas.html">Practice Areas</a></li><li><a href="./case-studies.html">Case Studies</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="./pricing.html">Pricing Plans</a></li><li><a href="./contact.html">Contact Us</a></li><li><a href="./privacy-policy.html">Privacy Policy</a></li><li><a href="./terms.html">Terms &amp; Conditions</a></li></ul></div>
+      <div>
+        <h4>Insights</h4>
+        <p>Receive concise legal briefings on governance, compliance, and dispute readiness.</p>
+        <form class="newsletter" data-validate style="margin-top:1rem">
+          <div class="form-field">
+            <input id="newsletter-email" class="input" type="email" placeholder="Business email" data-required>
+            <p class="error-text" data-form-message></p>
+          </div>
+          <button class="btn btn-primary btn-sm" type="submit" style="margin-top:.5rem;width:100%">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 STACKLY. All rights reserved.</span>
+      <span>Global legal consultancy for corporate, compliance, and dispute mandates.</span>
+    </div>
+  </footer>
+
+  <a class="back-to-top" href="javascript:void(0)" aria-label="Back to top">↑</a>
+  <div class="toast-container"></div>
+  <script src="../assets/js/app.js"></script>
+  <script>
+const contactForm = document.getElementById('contact-form');
+
+if (contactForm) {
+
+    function showFieldError(input, message) {
+        input.classList.add('error');
+        const errorElement = input.parentElement.querySelector('.error-text');
+        if (errorElement) errorElement.textContent = message;
+    }
+
+    function clearFieldError(input) {
+        input.classList.remove('error');
+        const errorElement = input.parentElement.querySelector('.error-text');
+        if (errorElement) errorElement.textContent = '';
+    }
+
+    // Patterns matching signup form
+    const patterns = {
+        name:    /^[a-zA-Z\s'\-]{2,}$/,
+        email:   /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        phone:   /^[\+\d\s\-\(\)]{7,20}$/,
+        company: /^[A-Za-z0-9\s&.,'-]{2,100}$/
+    };
+
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let valid = true;
+
+        const firstName   = document.getElementById('first-name');
+        const lastName    = document.getElementById('last-name');
+        const email       = document.getElementById('contact-email');
+        const phone       = document.getElementById('contact-phone');
+        const company     = document.getElementById('contact-company');
+        const message     = document.getElementById('contact-message');
+        const privacyCheck = document.getElementById('contact-privacy-agree');
+        const privacyErr  = document.getElementById('contact-privacy-error');
+
+        // First Name
+        if (!firstName.value.trim()) {
+            showFieldError(firstName, 'This field is required');
+            valid = false;
+        } else if (!patterns.name.test(firstName.value.trim())) {
+            showFieldError(firstName, 'Name must contain letters only (min 2 characters)');
+            valid = false;
+        } else {
+            clearFieldError(firstName);
+        }
+
+        // Last Name
+        if (!lastName.value.trim()) {
+            showFieldError(lastName, 'This field is required');
+            valid = false;
+        } else if (!patterns.name.test(lastName.value.trim())) {
+            showFieldError(lastName, 'Name must contain letters only (min 2 characters)');
+            valid = false;
+        } else {
+            clearFieldError(lastName);
+        }
+
+        // Email
+        if (!email.value.trim()) {
+            showFieldError(email, 'This field is required');
+            valid = false;
+        } else if (!patterns.email.test(email.value.trim())) {
+            showFieldError(email, 'Enter a valid email address');
+            valid = false;
+        } else {
+            clearFieldError(email);
+        }
+
+        // Phone (Optional)
+        if (phone.value.trim() && !patterns.phone.test(phone.value.trim())) {
+            showFieldError(phone, 'Enter a valid phone number (e.g. +1 555 000 0000)');
+            valid = false;
+        } else {
+            clearFieldError(phone);
+        }
+
+        // Company (Optional)
+        if (company.value.trim() && !patterns.company.test(company.value.trim())) {
+            showFieldError(company, 'Enter a valid company name');
+            valid = false;
+        } else {
+            clearFieldError(company);
+        }
+
+        // Message
+        if (!message.value.trim()) {
+            showFieldError(message, 'This field is required');
+            valid = false;
+        } else if (message.value.trim().length < 20) {
+            showFieldError(message, 'Message must contain at least 20 characters');
+            valid = false;
+        } else if (message.value.trim().length > 1000) {
+            showFieldError(message, 'Message cannot exceed 1000 characters');
+            valid = false;
+        } else {
+            clearFieldError(message);
+        }
+
+        // Privacy Policy
+        if (!privacyCheck.checked) {
+            privacyErr.textContent = 'You must agree to the Terms & Privacy Policy to continue';
+            valid = false;
+        } else {
+            privacyErr.textContent = '';
+        }
+
+        if (valid) {
+            window.location.href = './404.html';
+        }
+    });
+
+    // Real-time validation
+    contactForm.querySelectorAll('.input').forEach(input => {
+        input.addEventListener('input', function () {
+            clearFieldError(this);
+        });
+
+        input.addEventListener('blur', function () {
+            const value = this.value.trim();
+
+            if ((this.id === 'first-name' || this.id === 'last-name') && value && !patterns.name.test(value)) {
+                showFieldError(this, 'Name must contain letters only (min 2 characters)');
+            }
+            if (this.id === 'contact-email' && value && !patterns.email.test(value)) {
+                showFieldError(this, 'Enter a valid email address');
+            }
+            if (this.id === 'contact-phone' && value && !patterns.phone.test(value)) {
+                showFieldError(this, 'Enter a valid phone number (e.g. +1 555 000 0000)');
+            }
+            if (this.id === 'contact-company' && value && !patterns.company.test(value)) {
+                showFieldError(this, 'Enter a valid company name');
+            }
+            if (this.id === 'contact-message' && value && value.length < 20) {
+                showFieldError(this, 'Minimum 20 characters required');
+            }
+        });
+    });
+}
+</script>
+</body>
+</html>

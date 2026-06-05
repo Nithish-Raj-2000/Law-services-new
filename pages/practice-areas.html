@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore STACKLY's legal practice areas including corporate law, international arbitration, M&A advisory, compliance, and more.">
+  <title>Practice Areas | STACKLY Legal Consultancy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .practice-card {
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      background-color: var(--color-background);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .practice-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .practice-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .practice-card h3 {
+      margin: 0 0 1rem 0;
+      color: var(--color-text-primary);
+    }
+
+    .practice-card p {
+      margin: 0 0 1.5rem 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+    }
+
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+      flex-grow: 1;
+    }
+
+    .service-list li {
+      padding: 0.5rem 0;
+      padding-left: 1.75rem;
+      position: relative;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+    }
+
+    .service-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: bold;
+    }
+
+    .practice-card .btn {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    .accordion {
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-header {
+      background-color: var(--color-background);
+      border: none;
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      transition: background-color 0.2s ease;
+    }
+
+    .accordion-header:hover {
+      background-color: var(--color-background-secondary);
+    }
+
+    .accordion-toggle {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      color: var(--color-primary);
+      font-size: 1.2rem;
+    }
+
+    .accordion-item.active .accordion-toggle {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: var(--color-background-secondary);
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
+    }
+
+    .accordion-body {
+      padding: 1.5rem;
+    }
+
+    .accordion-body p {
+      margin: 0;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html" aria-label="STACKLY home">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="../Images/logo.webp" alt="STACKLY Logo" width="120" height="80" loading="eager">
+        </span>
+        <!-- <span class="brand-copy"><span class="brand-name">STACKLY</span><span class="brand-tagline">Law Services</span></span> -->
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="./about.html" data-page="about">About</a>
+        <a href="./practice-areas.html" data-page="practice">Practice Areas</a>
+        <a href="./case-studies.html" data-page="cases">Case Studies</a>
+        <a href="./team.html" data-page="team">Attorneys</a>
+        <a href="./pricing.html" data-page="pricing">Pricing</a>
+        <a href="./contact.html" data-page="contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+        <a class="btn btn-secondary btn-sm" href="./login.html">Login</a>
+        <a class="btn btn-primary btn-sm" href="./signup.html">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:.75rem">
+        <a href="../index.html">Home</a>
+        <span style="margin:0 .5rem;opacity:.4">/</span>
+        <span aria-current="page">Practice Areas</span>
+      </nav>
+      <h1 class="hero-title">Practice Areas</h1>
+      <p class="hero-subtitle">Comprehensive legal expertise across industries and jurisdictions</p>
+    </div>
+  </section>
+
+  <!-- Practice Areas Grid -->
+  <section class="reveal" style="padding:3rem 0">
+    <div class="container">
+      <div class="grid-three">
+        <!-- Corporate Law -->
+        <div class="practice-card">
+          <div class="practice-icon">📋</div>
+          <h3>Corporate Law</h3>
+          <p>Comprehensive guidance on corporate governance, entity formation, shareholder agreements, and board matters. We help businesses structure operations for maximum efficiency and compliance.</p>
+          <ul class="service-list">
+            <li>Corporate governance and compliance</li>
+            <li>Entity formation and restructuring</li>
+            <li>Shareholder and operating agreements</li>
+            <li>Board advisory and secretary services</li>
+          </ul>
+          <a href="./404.html" class="btn btn-primary btn-sm">Consult Now</a>
+        </div>
+
+        <!-- International Arbitration -->
+        <div class="practice-card">
+          <div class="practice-icon">⚔️</div>
+          <h3>International Arbitration</h3>
+          <p>Expert representation in complex cross-border disputes. Our team has extensive experience with ICC, UNCITRAL, and LCIA arbitrations, with a track record of favorable outcomes.</p>
+          <ul class="service-list">
+            <li>Commercial arbitration representation</li>
+            <li>Investment treaty disputes</li>
+            <li>Arbitration clause drafting</li>
+            <li>Enforcement and recognition of awards</li>
+          </ul>
+          <a href="./404.html" class="btn btn-primary btn-sm">Consult Now</a>
+        </div>
+
+        <!-- Regulatory Compliance -->
+        <div class="practice-card">
+          <div class="practice-icon">⚙️</div>
+          <h3>Regulatory Compliance</h3>
+          <p>Navigate complex regulatory landscapes across multiple jurisdictions. We provide strategic compliance solutions for regulated industries including finance, healthcare, and manufacturing.</p>
+          <ul class="service-list">
+            <li>Regulatory audit and risk assessment</li>
+            <li>Compliance program development</li>
+            <li>Government investigations defense</li>
+            <li>Multi-jurisdictional compliance</li>
+          </ul>
+          <a href="./404.html" class="btn btn-primary btn-sm">Consult Now</a>
+        </div>
+
+        <!-- M&A Advisory -->
+        <div class="practice-card">
+          <div class="practice-icon">💼</div>
+          <h3>M&A Advisory</h3>
+          <p>Strategic guidance through mergers, acquisitions, and divestitures. From due diligence to closing, we coordinate with accountants and advisors to ensure smooth transactions.</p>
+          <ul class="service-list">
+            <li>Due diligence and target analysis</li>
+            <li>Transaction structuring</li>
+            <li>Purchase and sale agreements</li>
+            <li>Post-closing integration support</li>
+          </ul>
+          <a href="./404.html" class="btn btn-primary btn-sm">Consult Now</a>
+        </div>
+
+        <!-- Commercial Litigation -->
+        <div class="practice-card">
+          <div class="practice-icon">⚖️</div>
+          <h3>Commercial Litigation</h3>
+          <p>Aggressive representation in contract disputes, business torts, and commercial conflicts. Our litigators combine courtroom experience with strategic negotiation skills to achieve results.</p>
+          <ul class="service-list">
+            <li>Contract and commercial disputes</li>
+            <li>Business tort litigation</li>
+            <li>Intellectual property disputes</li>
+            <li>Mediation and settlement negotiation</li>
+          </ul>
+          <a href="./404.html" class="btn btn-primary btn-sm">Consult Now</a>
+        </div>
+
+        <!-- Data Privacy & Technology -->
+        <div class="practice-card">
+          <div class="practice-icon">🔒</div>
+          <h3>Data Privacy & Technology</h3>
+          <p>Specialized expertise in data protection, cybersecurity law, and technology transactions. GDPR, CCPA, and emerging privacy laws require specialized guidance we uniquely provide.</p>
+          <ul class="service-list">
+            <li>GDPR and CCPA compliance</li>
+            <li>Data breach response and notification</li>
+            <li>Technology vendor agreements</li>
+            <li>AI and emerging tech governance</li>
+          </ul>
+          <a href="./404.html" class="btn btn-primary btn-sm">Consult Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose STACKLY Section with Image -->
+  <section class="reveal" style="padding:3rem 0;background-color:var(--bg-surface);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+    <div class="container">
+      <div class="grid-two">
+        <div>
+          <img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=800&fm=webp" alt="STACKLY legal team in action" class="img-responsive">
+        </div>
+        <div>
+          <h2>Why Choose STACKLY for Your Legal Needs?</h2>
+          <p>Our practice areas represent decades of combined experience, strategic thinking, and proven results. We don't just handle cases—we drive outcomes.</p>
+          <ul class="list-checkmark">
+            <li><strong>Specialized Expertise:</strong> Deep knowledge in each practice area with attorneys who are recognized leaders in their fields</li>
+            <li><strong>Integrated Approach:</strong> Seamless coordination between practice areas for holistic solutions</li>
+            <li><strong>Strategic Mindset:</strong> We align legal strategy with your business goals and objectives</li>
+            <li><strong>Proven Track Record:</strong> Thousands of successful matters resolved across all practice areas</li>
+            <li><strong>Client Success:</strong> Your wins are our wins—we measure success by your outcomes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="reveal" style="padding:3rem 0">
+    <div class="container">
+      <h2 style="text-align:center; margin-bottom:3rem">Frequently Asked Questions</h2>
+      <div class="accordion" style="max-width:800px; margin:0 auto">
+        <!-- FAQ 1 -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>What should I expect during an initial legal consultation?</span>
+            <span class="accordion-toggle">▼</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>During your initial consultation, our attorneys will listen to your situation, ask clarifying questions, and provide preliminary legal analysis. We'll discuss your objectives, timeline, and budget. This helps us understand whether STACKLY is the right fit and what engagement terms make sense. Most consultations are confidential attorney-client communications covered by privilege, so you can speak freely about your concerns.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>How do you handle billing and what are your fee structures?</span>
+            <span class="accordion-toggle">▼</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>We offer flexible fee arrangements including hourly rates, flat fees for defined projects, and success-based contingency fees for appropriate matters. For each engagement, we provide a detailed engagement letter outlining fees, billing practices, and cost estimates. We believe in transparent billing with regular communications about time and expense updates. Most clients appreciate our detailed invoicing that breaks down work by task and attorney.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Can STACKLY represent me in multiple jurisdictions?</span>
+            <span class="accordion-toggle">▼</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Yes, that's one of our key strengths. With offices in New York, London, Singapore, and Dubai, plus relationships with trusted local counsel worldwide, we can coordinate representation across jurisdictions. For matters requiring local bar admission, we work with qualified local counsel while maintaining your primary relationship with STACKLY. This coordinated approach ensures consistent strategy and communication across all jurisdictions.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>What industries does STACKLY specialize in?</span>
+            <span class="accordion-toggle">▼</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>While our practice areas are industry-agnostic, we have particular depth in financial services, technology, energy, healthcare, real estate, and manufacturing. Our attorneys have specialized knowledge in how legal issues manifest in these sectors and understand the regulatory landscape. That said, we successfully represent clients across all industries—the legal principles and our approach translate well regardless of sector.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="accordion-item">
+          <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>How does STACKLY ensure client confidentiality and data security?</span>
+            <span class="accordion-toggle">▼</span>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-body">
+              <p>Client confidentiality is paramount. All communications are protected by attorney-client privilege. We use enterprise-grade encryption for email and document storage, maintain strict access controls, and comply with all applicable data protection regulations including GDPR and CCPA. Our infrastructure is regularly audited and we maintain cyber liability insurance. We take information security as seriously as the law itself.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section reveal">
+    <div class="container">
+      <h2>Ready to Solve Your Legal Challenges?</h2>
+      <p>Contact STACKLY today to discuss which practice area best serves your needs.</p>
+      <div class="button-group">
+        <a href="./404.html" class="btn btn-primary">Book a Consultation</a>
+        <a href="./404.html" class="btn btn-outline">Meet Our Attorneys</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="../index.html" aria-label="STACKLY home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="../Images/logo.webp" alt="STACKLY Logo" width="120" height="80" loading="lazy">
+          </span>
+          <!-- <span class="brand-copy"><span class="brand-name">STACKLY</span><span class="brand-tagline">Law Services</span></span> -->
+        </a>
+        <p style="margin-top:1rem">Justice. Strategy. Results.</p>
+        <div class="social-row">
+          <a href="./404.html"><span>in</span></a>
+          <a href="./404.html"><span>X</span></a>
+          <a href="./404.html"><span>ig</span></a>
+        </div>
+      </div>
+      <div><h4>Firm</h4><ul><li><a href="../index.html">Home</a></li><li><a href="./about.html">About Us</a></li><li><a href="./practice-areas.html">Practice Areas</a></li><li><a href="./case-studies.html">Case Studies</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="./pricing.html">Pricing</a></li><li><a href="./contact.html">Contact</a></li><li><a href="./privacy-policy.html">Privacy Policy</a></li><li><a href="./terms.html">Terms</a></li></ul></div>
+      <div><h4>Insights</h4><p>Receive legal briefings.</p>
+        <form class="newsletter" data-validate style="margin-top:1rem">
+          <div class="form-field">
+            <input id="nl-email" class="input" type="email" placeholder="Business email" data-required>
+            <p class="error-text" data-form-message></p>
+          </div>
+          <button class="btn btn-primary btn-sm" type="submit" style="margin-top:.5rem;width:100%">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 STACKLY. All rights reserved.</span><span>Global legal consultancy.</span></div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    function toggleAccordion(header) {
+      const item = header.parentElement;
+      const isActive = item.classList.contains('active');
+
+      // Close all accordion items
+      document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+        accordionItem.classList.remove('active');
+      });
+
+      // Open clicked item if it wasn't already open
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard — STACKLY Law Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="client-dashboard">
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a class="brand" href="../index.html" aria-label="STACKLY home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="../Images/logo.webp" alt="STACKLY Logo" width="120" height="80" loading="eager">
+          </span>
+          <!-- <span class="brand-copy"><span class="brand-name" style="font-size:.95rem">STACKLY</span><span class="brand-tagline">Client Portal</span></span> -->
+        </a>
+        <button class="sidebar-close" aria-label="Close sidebar">✕</button>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <div class="nav-section-label">My Portal</div>
+          <a href="#overview" class="active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            Overview
+          </a>
+          <a href="#my-cases">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            My Cases
+            <span class="nav-badge">2</span>
+          </a>
+          <a href="#documents">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>
+            Documents
+          </a>
+          <a href="#consultations">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Consultations
+          </a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-label">Billing</div>
+          <a href="#invoices">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            Invoices &amp; Payments
+          </a>
+          <a href="#billing">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            Billing History
+          </a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-label">Account</div>
+          <a href="#profile">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
+            My Profile
+          </a>
+          <a href="#settings">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Settings
+          </a>
+          <a href="#" data-logout>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+            Sign Out
+          </a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar" style="width:36px;height:36px;border-radius:50%;background:var(--gold-600);display:flex;align-items:center;justify-content:center;font-weight:700;color:#060a12;font-size:.85rem;flex-shrink:0">C</div>
+          <div class="sidebar-user-info">
+            <div class="name">My Account</div>
+            <div class="role">Client</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <button class="topbar-burger" aria-label="Toggle sidebar">☰</button>
+        <div class="topbar-title">My Dashboard</div>
+        <div class="topbar-search">
+          <span class="topbar-search-icon">🔍</span>
+          <input type="text" placeholder="Search cases, documents…" aria-label="Search">
+        </div>
+        <div class="topbar-actions">
+          <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" style="width:38px;height:38px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--border-subtle);font-size:14px"></button>
+          <button class="topbar-icon-btn" aria-label="Notifications">
+            🔔<span class="notif-dot"></span>
+          </button>
+          <div class="topbar-avatar" title="My Account" style="width:36px;height:36px;border-radius:50%;background:var(--gold-600);display:flex;align-items:center;justify-content:center;font-weight:700;color:#060a12;font-size:.9rem;flex-shrink:0;cursor:pointer">C</div>
+        </div>
+      </header>
+
+      <div class="dashboard-content">
+
+        <!-- Welcome -->
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+          <div>
+            <h2 style="font-family:'Manrope',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:.25rem">Welcome, Client</h2>
+            <p style="color:var(--text-muted);font-size:.875rem">Your legal matters are in good hands. Here's your latest update.</p>
+          </div>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+            <button class="btn btn-secondary btn-sm" onclick="window.location.href='./404.html'">✉ Message Attorney</button>
+            <button class="btn btn-primary btn-sm" onclick="window.location.href='./404.html'">+ Book Consultation</button>
+          </div>
+        </div>
+
+        <!-- Alert Banner -->
+        <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:var(--radius-md);padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+          <span style="font-size:1.25rem">⚡</span>
+          <div style="flex:1"><strong style="color:var(--gold-400)">Action Required:</strong> <span style="color:var(--text-secondary);font-size:.875rem">Your attorney has requested additional documents for Case #ST-2026-001. Please upload them by June 8.</span></div>
+          <button class="btn btn-primary btn-sm" onclick="window.location.href='./404.html'">Upload Now</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-cards">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon gold">⚖️</div>
+              <span class="status-pill active">Active</span>
+            </div>
+            <div class="stat-card-value" style="color:var(--gold-400)">2</div>
+            <div class="stat-card-label">Open Cases</div>
+            <div class="stat-card-sub">1 M&A · 1 Compliance</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon blue">📅</div>
+            </div>
+            <div class="stat-card-value" style="color:var(--info)">3</div>
+            <div class="stat-card-label">Upcoming Hearings</div>
+            <div class="stat-card-sub">Next: June 10</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon green">📄</div>
+              <span class="stat-card-badge badge-up">+4 new</span>
+            </div>
+            <div class="stat-card-value" style="color:var(--success)">18</div>
+            <div class="stat-card-label">Documents</div>
+            <div class="stat-card-sub">4 require review</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon red">💳</div>
+              <span class="stat-card-badge badge-down">Due</span>
+            </div>
+            <div class="stat-card-value" style="color:var(--error)">$8,200</div>
+            <div class="stat-card-label">Outstanding Balance</div>
+            <div class="stat-card-sub">Due June 15</div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <button class="quick-action-btn" onclick="window.location.href='./404.html'">
+            <div class="quick-action-icon">📅</div>
+            <span class="quick-action-label">Book Consultation</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='./404.html'">
+            <div class="quick-action-icon">📤</div>
+            <span class="quick-action-label">Upload Document</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='./404.html'">
+            <div class="quick-action-icon">💬</div>
+            <span class="quick-action-label">Message Attorney</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='./404.html'">
+            <div class="quick-action-icon">🎯</div>
+            <span class="quick-action-label">Get Support</span>
+          </button>
+        </div>
+
+        <!-- Cases + Updates -->
+        <div class="dashboard-grid">
+          <!-- My Cases -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <span class="panel-title">My Active Cases</span>
+              <a class="panel-action" href="#my-cases">View All</a>
+            </div>
+
+            <!-- Case Card 1 -->
+            <div class="card" style="margin-bottom:1rem;padding:1.25rem">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem">
+                <div>
+                  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.25rem">
+                    <strong>#ST-2026-001</strong>
+                    <span class="chip">M&A Advisory</span>
+                    <span class="status-pill active">Active</span>
+                  </div>
+                  <div style="font-size:.8rem;color:var(--text-muted)">NorthPeak Capital — $400M Acquisition</div>
+                </div>
+                <button class="btn btn-ghost btn-sm" onclick="window.location.href='./404.html'">View Details →</button>
+              </div>
+              <div style="font-size:.875rem;color:var(--text-secondary);margin-bottom:1rem">Due diligence phase in progress. Reviewing target company financials and regulatory approvals.</div>
+              <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap">
+                <img src="https://images.pexels.com/photos/5615665/pexels-photo-5615665.jpeg?auto=compress&cs=tinysrgb&w=60" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--gold-600)" alt="Marcus">
+                <div style="font-size:.8rem;color:var(--text-muted)">Attorney: <strong style="color:var(--text-primary)">Marcus Holden</strong></div>
+                <div style="margin-left:auto;font-size:.8rem;color:var(--text-muted)">Next hearing: <strong style="color:var(--gold-400)">June 10</strong></div>
+              </div>
+              <div class="progress-track" style="margin-top:.75rem"><div class="progress-fill" style="width:65%"></div></div>
+              <div style="font-size:.75rem;color:var(--text-faint);margin-top:.3rem">65% complete</div>
+            </div>
+
+            <!-- Case Card 2 -->
+            <div class="card" style="padding:1.25rem">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem">
+                <div>
+                  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.25rem">
+                    <strong>#ST-2026-003</strong>
+                    <span class="chip blue">Compliance</span>
+                    <span class="status-pill pending">Pending</span>
+                  </div>
+                  <div style="font-size:.8rem;color:var(--text-muted)">GDPR & AML Compliance Audit</div>
+                </div>
+                <button class="btn btn-ghost btn-sm" onclick="window.location.href='./404.html'">View Details →</button>
+              </div>
+              <div style="font-size:.875rem;color:var(--text-secondary);margin-bottom:1rem">Initial assessment completed. Awaiting document submission to proceed with full audit program.</div>
+              <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap">
+                <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=60" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--gold-600)" alt="Amara">
+                <div style="font-size:.8rem;color:var(--text-muted)">Attorney: <strong style="color:var(--text-primary)">Amara Osei</strong></div>
+                <div style="margin-left:auto;font-size:.8rem;color:var(--text-muted)">Deadline: <strong style="color:var(--error)">June 22</strong></div>
+              </div>
+              <div class="progress-track" style="margin-top:.75rem"><div class="progress-fill blue" style="width:30%"></div></div>
+              <div style="font-size:.75rem;color:var(--text-faint);margin-top:.3rem">30% complete</div>
+            </div>
+          </div>
+
+          <!-- Upcoming + Updates -->
+          <div style="display:flex;flex-direction:column;gap:1.5rem">
+            <!-- Upcoming Events -->
+            <div class="dashboard-panel">
+              <div class="panel-header">
+                <span class="panel-title">Upcoming Events</span>
+              </div>
+              <div class="events-list">
+                <div class="event-item">
+                  <div class="event-date"><div class="month">JUN</div><div class="day-num">7</div></div>
+                  <div class="event-info"><div class="title">Consultation — M. Holden</div><div class="meta">2:00 PM · Zoom · 60 min</div></div>
+                </div>
+                <div class="event-item">
+                  <div class="event-date"><div class="month">JUN</div><div class="day-num">10</div></div>
+                  <div class="event-info"><div class="title">Hearing — Case #ST-2026-001</div><div class="meta">10:00 AM · NY Courts</div></div>
+                </div>
+                <div class="event-item" style="border-left-color:var(--error)">
+                  <div class="event-date"><div class="month">JUN</div><div class="day-num">15</div></div>
+                  <div class="event-info"><div class="title">Invoice Due — $8,200</div><div class="meta">INV-0044 · NorthPeak M&A</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Messages -->
+            <div class="dashboard-panel">
+              <div class="panel-header">
+                <span class="panel-title">Recent Messages</span>
+                <span class="chip">2 unread</span>
+              </div>
+              <div class="notif-list">
+                <div class="notif-item unread">
+                  <img class="notif-avatar" src="https://images.pexels.com/photos/5615665/pexels-photo-5615665.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Marcus">
+                  <div class="notif-body">
+                    <div class="msg"><strong>Marcus Holden</strong> — "Please review the draft merger agreement I've uploaded and confirm by EOD Friday."</div>
+                    <div class="time">1h ago</div>
+                  </div>
+                </div>
+                <div class="notif-item unread">
+                  <img class="notif-avatar" src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Amara">
+                  <div class="notif-body">
+                    <div class="msg"><strong>Amara Osei</strong> — "Your GDPR compliance checklist is ready. Missing 3 documents — please upload asap."</div>
+                    <div class="time">3h ago</div>
+                  </div>
+                </div>
+                <div class="notif-item">
+                  <img class="notif-avatar" src="https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Sophia">
+                  <div class="notif-body">
+                    <div class="msg"><strong>STACKLY Admin</strong> — "Your next invoice (INV-0044) for $8,200 will be due on June 15, 2026."</div>
+                    <div class="time">Yesterday</div>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:.75rem 1rem;border-top:1px solid var(--border-subtle)">
+                <button class="btn btn-ghost btn-sm w-full" style="justify-content:center" onclick="window.location.href='./404.html'">Open Full Inbox →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documents Table -->
+        <div class="dashboard-panel" style="margin-bottom:2rem">
+          <div class="panel-header">
+            <span class="panel-title">My Documents</span>
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <button class="btn btn-secondary btn-sm" onclick="window.location.href='./404.html'">+ Upload</button>
+              <a class="panel-action" href="#documents">View All</a>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Document</th>
+                  <th>Case</th>
+                  <th>Type</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>📄 Merger Agreement Draft v2.pdf</td>
+                  <td>#ST-2026-001</td>
+                  <td><span class="chip">Contract</span></td>
+                  <td>Jun 2, 2026</td>
+                  <td><span class="status-pill pending">Review Required</span></td>
+                  <td><button class="btn btn-primary btn-sm" onclick="window.location.href='./404.html'">Review</button></td>
+                </tr>
+                <tr>
+                  <td>📄 Due Diligence Checklist.docx</td>
+                  <td>#ST-2026-001</td>
+                  <td><span class="chip">Checklist</span></td>
+                  <td>May 28, 2026</td>
+                  <td><span class="status-pill active">Completed</span></td>
+                  <td><button class="btn btn-ghost btn-sm" onclick="window.location.href='./404.html'">Download</button></td>
+                </tr>
+                <tr>
+                  <td>📄 GDPR Compliance Framework.pdf</td>
+                  <td>#ST-2026-003</td>
+                  <td><span class="chip blue">Compliance</span></td>
+                  <td>May 20, 2026</td>
+                  <td><span class="status-pill draft">Draft</span></td>
+                  <td><button class="btn btn-ghost btn-sm" onclick="window.location.href='./404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td>📄 Board Resolution — Acquisition.pdf</td>
+                  <td>#ST-2026-001</td>
+                  <td><span class="chip">Corporate</span></td>
+                  <td>May 15, 2026</td>
+                  <td><span class="status-pill active">Signed</span></td>
+                  <td><button class="btn btn-ghost btn-sm" onclick="window.location.href='./404.html'">Download</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Billing -->
+        <div class="dashboard-grid" style="margin-bottom:2rem">
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <span class="panel-title">Billing Summary</span>
+              <a class="panel-action" href="#invoices">View Invoices</a>
+            </div>
+            <div class="progress-list">
+              <div class="progress-item">
+                <div class="prog-header"><span class="prog-name">Legal Fees (YTD)</span><span class="prog-value">$44,500</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
+              </div>
+              <div class="progress-item">
+                <div class="prog-header"><span class="prog-name">Paid to Date</span><span class="prog-value">$36,300</span></div>
+                <div class="progress-track"><div class="progress-fill green" style="width:82%"></div></div>
+              </div>
+              <div class="progress-item">
+                <div class="prog-header"><span class="prog-name">Outstanding</span><span class="prog-value">$8,200</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:18%;background:var(--error)"></div></div>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-sm" style="margin-top:1.25rem;width:100%;justify-content:center" onclick="window.location.href='./404.html'">Pay Outstanding Balance →</button>
+          </div>
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <span class="panel-title">My Attorney</span>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:flex-start">
+              <img src="https://images.pexels.com/photos/5615665/pexels-photo-5615665.jpeg?auto=compress&cs=tinysrgb&w=200" style="width:80px;height:80px;border-radius:var(--radius-md);object-fit:cover;border:2px solid var(--gold-600)" alt="Marcus Holden">
+              <div>
+                <div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:1.125rem">Marcus Holden</div>
+                <div style="color:var(--gold-500);font-size:.8rem;font-weight:600;margin-bottom:.5rem">Senior Partner — Corporate & M&A</div>
+                <div style="font-size:.8rem;color:var(--text-muted);line-height:1.6">18+ years of experience in cross-border M&A, corporate restructuring, and capital markets. Ranked Band 1 by Chambers Global.</div>
+                <div style="display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap">
+                  <button class="btn btn-primary btn-sm" onclick="window.location.href='./404.html'">✉ Message</button>
+                  <button class="btn btn-secondary btn-sm" onclick="window.location.href='./404.html'">📅 Schedule</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

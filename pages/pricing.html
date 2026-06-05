@@ -1,0 +1,480 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | STACKLY Law Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 60px;
+      height: 32px;
+      background-color: #e0e0e0;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border: none;
+      padding: 0;
+    }
+    .toggle-switch.active {
+      background-color: #c9a84c;
+    }
+    .toggle-switch::before {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: white;
+      top: 2px;
+      left: 2px;
+      transition: left 0.3s;
+    }
+    .toggle-switch.active::before {
+      left: 30px;
+    }
+    .discount-badge {
+      background-color: #10b981;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .pricing-cards-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    @media (max-width: 960px) {
+      .pricing-cards-container { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: scale(1); }
+    }
+    .pricing-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 2rem;
+      background: var(--bg-secondary);
+      position: relative;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: #c9a84c;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .pricing-card.featured {
+      border-color: #c9a84c;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), rgba(201, 168, 76, 0.02));
+      transform: scale(1.05);
+    }
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #c9a84c;
+      color: #060a12;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .pricing-tier {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-amount {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      color: var(--text-primary);
+    }
+    .pricing-period {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    .pricing-features {
+      flex: 1;
+      margin-bottom: 2rem;
+    }
+    .pricing-features li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+    .pricing-features li::before {
+      content: '✓';
+      color: #10b981;
+      font-weight: bold;
+      min-width: 20px;
+    }
+    .pricing-cta {
+      width: 100%;
+    }
+    .faq-section {
+      margin: 4rem 0;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.5rem 0;
+    }
+    .faq-question {
+      font-weight: 600;
+      font-size: 1.125rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-primary);
+    }
+    .faq-toggle {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-toggle {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .comparison-table th {
+      background: var(--bg-secondary);
+      font-weight: 600;
+    }
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+    .comparison-table .feature-name {
+      font-weight: 500;
+      width: 40%;
+    }
+    .comparison-table .checkmark {
+      color: #10b981;
+      font-weight: bold;
+    }
+    .comparison-table .cross {
+      color: #ef4444;
+    }
+    .comparison-table tbody tr {
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .comparison-table tbody tr:hover td {
+      background: rgba(201,168,76,0.06);
+    }
+  </style>
+</head>
+<body data-page="pricing">
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html" aria-label="STACKLY home">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="../Images/logo.webp" alt="STACKLY Logo" width="120" height="80" loading="eager">
+        </span>
+        <!-- <span class="brand-copy"><span class="brand-name">STACKLY</span><span class="brand-tagline">Law Services</span></span> -->
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./practice-areas.html">Practice Areas</a>
+        <a href="./case-studies.html">Case Studies</a>
+        <a href="./team.html">Attorneys</a>
+        <a href="./pricing.html">Pricing</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+        <a class="btn btn-secondary btn-sm" href="./login.html">Login</a>
+        <a class="btn btn-primary btn-sm" href="./signup.html">Sign Up</a>
+        <a class="btn btn-outline btn-sm" href="./contact.html">Book Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-eyebrow">Transparent Pricing</span>
+        <h1 class="hero-title">Simple, Predictable Billing</h1>
+        <p class="hero-subtitle">Choose the plan that fits your business. No hidden fees, no surprises.</p>
+      </div>
+    </section>
+
+    <!-- Pricing Toggle Section -->
+    <section class="container">
+      <div style="text-align: center; margin-top: 2rem;">
+        <div class="pricing-toggle">
+          <span id="monthly-label">Monthly</span>
+          <button class="toggle-switch active" id="billing-toggle" aria-label="Toggle billing period"></button>
+          <span id="annual-label">Annual <span class="discount-badge" id="discount-text">Save 20%</span></span>
+        </div>
+      </div>
+
+      <!-- Pricing Cards -->
+      <div class="pricing-cards-container">
+        <!-- Essential Plan -->
+        <div class="pricing-card">
+          <div class="pricing-tier">Essential</div>
+          <div class="pricing-amount" id="essential-price">$2,500</div>
+          <div class="pricing-period" id="essential-period">/month</div>
+          <ul class="pricing-features">
+            <li>Up to 5 legal consultations per month</li>
+            <li>Document review and templates</li>
+            <li>Email support</li>
+            <li>Contract drafting (basic)</li>
+            <li>Compliance documentation</li>
+            <li>Mobile access</li>
+          </ul>
+          <a class="btn btn-primary btn-lg pricing-cta" href="./404.html">Get Started</a>
+        </div>
+
+        <!-- Professional Plan (Featured) -->
+        <div class="pricing-card featured">
+          <div class="pricing-tier">Professional</div>
+          <div class="pricing-amount" id="professional-price">$6,500</div>
+          <div class="pricing-period" id="professional-period">/month</div>
+          <ul class="pricing-features">
+            <li>Unlimited consultations</li>
+            <li>Priority support (phone + email)</li>
+            <li>Advanced contract drafting</li>
+            <li>Legal research assistance</li>
+            <li>Compliance audit &amp; recommendations</li>
+            <li>Dedicated account manager</li>
+            <li>Custom legal templates</li>
+            <li>Quarterly strategy sessions</li>
+          </ul>
+          <a class="btn btn-primary btn-lg pricing-cta" href="./404.html">Start Free Trial</a>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card">
+          <div class="pricing-tier">Enterprise</div>
+          <div class="pricing-amount">Custom</div>
+          <div class="pricing-period">tailored pricing</div>
+          <ul class="pricing-features">
+            <li>Everything in Professional</li>
+            <li>Multi-jurisdiction legal coverage</li>
+            <li>24/7 emergency legal support</li>
+            <li>Dedicated legal team</li>
+            <li>Board-level advisory services</li>
+            <li>Custom SLA &amp; reporting</li>
+            <li>On-site attorney availability</li>
+            <li>Annual legal strategy review</li>
+          </ul>
+          <a class="btn btn-primary btn-lg pricing-cta" href="./404.html">Contact Sales</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Comparison -->
+    <section class="container" style="margin-bottom:3rem">
+      <h2 style="text-align:center;margin-bottom:.5rem;font-family:'Manrope',sans-serif;font-weight:800">Feature Comparison</h2>
+      <p style="text-align:center;color:var(--text-secondary);margin-bottom:2rem">Compare plans side by side to find the right fit.</p>
+      <div style="overflow-x:auto">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th class="feature-name">Feature</th>
+              <th>Essential</th>
+              <th>Professional</th>
+              <th>Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="feature-name">Legal Consultations</td><td>5 / month</td><td>Unlimited</td><td>Unlimited</td></tr>
+            <tr><td class="feature-name">Document Review</td><td class="checkmark">✓</td><td class="checkmark">✓</td><td class="checkmark">✓</td></tr>
+            <tr><td class="feature-name">Contract Drafting</td><td>Basic</td><td>Advanced</td><td>Full custom</td></tr>
+            <tr><td class="feature-name">Support Channels</td><td>Email</td><td>Phone + Email</td><td>24/7 dedicated</td></tr>
+            <tr><td class="feature-name">Dedicated Account Manager</td><td class="cross">✗</td><td class="checkmark">✓</td><td class="checkmark">✓</td></tr>
+            <tr><td class="feature-name">Legal Research Assistance</td><td class="cross">✗</td><td class="checkmark">✓</td><td class="checkmark">✓</td></tr>
+            <tr><td class="feature-name">Compliance Audit</td><td class="cross">✗</td><td class="checkmark">✓</td><td class="checkmark">✓</td></tr>
+            <tr><td class="feature-name">Multi-jurisdiction Coverage</td><td class="cross">✗</td><td class="cross">✗</td><td class="checkmark">✓</td></tr>
+            <tr><td class="feature-name">On-site Attorney Access</td><td class="cross">✗</td><td class="cross">✗</td><td class="checkmark">✓</td></tr>
+            <tr><td class="feature-name">Board-level Advisory</td><td class="cross">✗</td><td class="cross">✗</td><td class="checkmark">✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container faq-section">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How do I choose between plans?</span>
+          <div class="faq-toggle">↓</div>
+        </div>
+        <div class="faq-answer">
+          Essential is ideal for small businesses needing occasional legal support. Professional is perfect for growing companies with regular legal needs. Enterprise offers fully customized solutions for large organizations with complex requirements. We recommend the Professional plan as it offers the best value and flexibility for most clients.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Can I switch plans anytime?</span>
+          <div class="faq-toggle">↓</div>
+        </div>
+        <div class="faq-answer">
+          Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the beginning of your next billing cycle. If you upgrade mid-cycle, we'll prorate your charges. If you downgrade, credits will be applied to your account.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What payment methods do you accept?</span>
+          <div class="faq-toggle">↓</div>
+        </div>
+        <div class="faq-answer">
+          We accept all major credit cards (Visa, Mastercard, American Express), bank transfers, and invoicing for annual payments. Enterprise clients can arrange custom payment terms. All payments are processed securely through industry-standard encryption.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Is there a minimum contract term?</span>
+          <div class="faq-toggle">↓</div>
+        </div>
+        <div class="faq-answer">
+          No. Monthly plans have no minimum commitment and can be cancelled anytime with 30 days notice. Annual plans offer a 20% discount but require a one-year commitment. Enterprise clients work with us on custom terms based on their specific needs.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Do you offer a free trial?</span>
+          <div class="faq-toggle">↓</div>
+        </div>
+        <div class="faq-answer">
+          Yes! All Professional plan customers get a 14-day free trial with full access to all features. No credit card required to start. After the trial, you can continue with a monthly subscription or annual plan. We also offer a custom trial for Enterprise clients.
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Get Started?</h2>
+        <p>Choose your plan today or speak with our sales team to find the perfect fit for your organization.</p>
+        <a href="./404.html" class="btn btn-primary btn-lg">Schedule Demo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="../index.html" aria-label="STACKLY home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="../Images/logo.webp" alt="STACKLY Logo" width="120" height="80" loading="lazy">
+          </span>
+          <!-- <span class="brand-copy"><span class="brand-name">STACKLY</span><span class="brand-tagline">Law Services</span></span> -->
+        </a>
+        <p style="margin-top:1rem">Justice. Strategy. Results.</p>
+        <div class="social-row"><a href="./404.html"><span>in</span></a><a href="./404.html"><span>X</span></a><a href="./404.html"><span>ig</span></a></div>
+      </div>
+      <div><h4>Firm</h4><ul><li><a href="../index.html">Home</a></li><li><a href="./about.html">About Us</a></li><li><a href="./practice-areas.html">Practice Areas</a></li><li><a href="./case-studies.html">Case Studies</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="./pricing.html">Pricing</a></li><li><a href="./contact.html">Contact</a></li><li><a href="./privacy-policy.html">Privacy Policy</a></li><li><a href="./terms.html">Terms</a></li></ul></div>
+      <div><h4>Insights</h4><form class="newsletter" data-validate style="margin-top:1rem"><div class="form-field"><input class="input" type="email" placeholder="Business email" data-required><p class="error-text" data-form-message></p></div><button class="btn btn-primary btn-sm" type="submit" style="margin-top:.5rem;width:100%">Subscribe</button></form></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 STACKLY. All rights reserved.</span><span>Global legal consultancy.</span></div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    // Pricing toggle functionality
+    const billingToggle = document.getElementById('billing-toggle');
+    const essentialPrice = document.getElementById('essential-price');
+    const professionalPrice = document.getElementById('professional-price');
+    const essentialPeriod = document.getElementById('essential-period');
+    const professionalPeriod = document.getElementById('professional-period');
+    let isAnnual = false;
+
+    billingToggle.addEventListener('click', function() {
+      isAnnual = !isAnnual;
+      this.classList.toggle('active');
+
+      if (isAnnual) {
+        // Annual pricing (20% discount)
+        essentialPrice.textContent = '$24,000';
+        professionalPrice.textContent = '$62,400';
+        essentialPeriod.textContent = '/year';
+        professionalPeriod.textContent = '/year';
+      } else {
+        // Monthly pricing
+        essentialPrice.textContent = '$2,500';
+        professionalPrice.textContent = '$6,500';
+        essentialPeriod.textContent = '/month';
+        professionalPeriod.textContent = '/month';
+      }
+    });
+
+    // FAQ accordion functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        const faqItem = this.parentElement;
+        faqItem.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — STACKLY Law Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="signup">
+  <div class="preloader" aria-hidden="true"><div class="preloader-ring"></div></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html" aria-label="STACKLY home">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="../Images/logo.webp" alt="STACKLY Logo" width="120" height="80" loading="eager">
+        </span>
+        <!-- <span class="brand-copy"><span class="brand-name">STACKLY</span><span class="brand-tagline">Law Services</span></span> -->
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./practice-areas.html">Practice Areas</a>
+        <a href="./case-studies.html">Case Studies</a>
+        <a href="./team.html">Attorneys</a>
+        <a href="./pricing.html">Pricing</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+        <a class="btn btn-secondary btn-sm" href="./login.html">Login</a>
+        <a class="btn btn-outline btn-sm" href="./contact.html">Book Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="auth-page">
+    <a class="auth-back-btn" href="../index.html">← Back to Home</a>
+    <div class="container" style="width:100%">
+      <div class="auth-grid">
+        <!-- Visual Side -->
+        <div class="auth-visual">
+          <img src="https://images.pexels.com/photos/3760093/pexels-photo-3760093.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="STACKLY team" loading="lazy">
+          <div class="auth-visual-overlay"></div>
+          <div class="auth-visual-content">
+            <span class="auth-visual-badge">★ Join 500+ satisfied clients</span>
+            <h2>Start your legal journey with STACKLY</h2>
+            <p>Create your account and get immediate access to expert legal counsel, case tracking, document management, and priority consultation booking.</p>
+            <div style="display:flex;flex-direction:column;gap:.75rem;margin-top:1.5rem">
+              <div style="display:flex;align-items:center;gap:.75rem;font-size:.85rem;color:rgba(255,255,255,.8)"><span style="color:var(--gold-400);font-weight:700">✓</span> Dedicated case manager assigned within 24 hours</div>
+              <div style="display:flex;align-items:center;gap:.75rem;font-size:.85rem;color:rgba(255,255,255,.8)"><span style="color:var(--gold-400);font-weight:700">✓</span> Secure document vault with end-to-end encryption</div>
+              <div style="display:flex;align-items:center;gap:.75rem;font-size:.85rem;color:rgba(255,255,255,.8)"><span style="color:var(--gold-400);font-weight:700">✓</span> Real-time case status updates and attorney access</div>
+              <div style="display:flex;align-items:center;gap:.75rem;font-size:.85rem;color:rgba(255,255,255,.8)"><span style="color:var(--gold-400);font-weight:700">✓</span> Free 30-minute initial consultation</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="auth-form-panel">
+          <div class="auth-form-header">
+            <h1>Create Account</h1>
+            <p>Already have an account? <a href="./login.html">Sign in here</a></p>
+          </div>
+
+          <!-- Role Selector -->
+          <div style="margin-bottom:1.5rem">
+            <p style="font-size:var(--text-sm);font-weight:600;color:var(--text-secondary);margin-bottom:.75rem">Register as</p>
+            <div class="role-selector">
+              <label class="role-option selected">
+                <input type="radio" name="role" value="client" checked>
+                <div class="role-icon">👤</div>
+                <div class="role-text">
+                  <div class="role-title">Client</div>
+                  <div class="role-desc">Seek legal services</div>
+                </div>
+              </label>
+              <label class="role-option">
+                <input type="radio" name="role" value="admin">
+                <div class="role-icon">🛡️</div>
+                <div class="role-text">
+                  <div class="role-title">Admin</div>
+                  <div class="role-desc">Firm staff access</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <form id="signup-form" novalidate>
+            <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+              <div class="form-group">
+                <label class="form-label" for="signup-firstname">First Name <span class="req">*</span></label>
+                <div class="input-icon-wrapper">
+                  <span class="field-icon">👤</span>
+                  <input class="input" type="text" id="signup-firstname" name="firstname" placeholder="John" required data-required autocomplete="given-name">
+                </div>
+                <p class="error-text"></p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="signup-lastname">Last Name <span class="req">*</span></label>
+                <div class="input-icon-wrapper">
+                  <span class="field-icon">👤</span>
+                  <input class="input" type="text" id="signup-lastname" name="lastname" placeholder="Doe" required data-required autocomplete="family-name">
+                </div>
+                <p class="error-text"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="signup-email">Email Address <span class="req">*</span></label>
+              <div class="input-icon-wrapper">
+                <span class="field-icon">✉</span>
+                <input class="input" type="email" id="signup-email" name="email" placeholder="you@company.com" required data-required autocomplete="email">
+              </div>
+              <p class="error-text"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="signup-phone">Phone Number</label>
+              <div class="input-icon-wrapper">
+                <span class="field-icon">📱</span>
+                <input class="input" type="tel" id="signup-phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+              </div>
+              <p class="error-text"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="signup-company">Company / Organisation</label>
+              <div class="input-icon-wrapper">
+                <span class="field-icon">🏢</span>
+                <input class="input" type="text" id="signup-company" name="company" placeholder="Your company name" autocomplete="organization">
+              </div>
+              <p class="error-text"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="signup-password">Password <span class="req">*</span></label>
+              <div class="input-icon-wrapper">
+                <span class="field-icon">🔒</span>
+                <input class="input" type="password" id="signup-password" name="password" placeholder="Create a strong password" required data-required autocomplete="new-password">
+                <span class="toggle-pass" title="Show/hide password">👁</span>
+              </div>
+              <div class="strength-bar"><span class="strength-segment"></span><span class="strength-segment"></span><span class="strength-segment"></span><span class="strength-segment"></span></div>
+              <p class="strength-label error-text"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="signup-confirm">Confirm Password <span class="req">*</span></label>
+              <div class="input-icon-wrapper">
+                <span class="field-icon">🔒</span>
+                <input class="input" type="password" id="signup-confirm" name="confirm" placeholder="Repeat password" required data-required autocomplete="new-password">
+                <span class="toggle-pass" title="Show/hide password">👁</span>
+              </div>
+              <p class="error-text"></p>
+            </div>
+            <label class="form-check">
+              <input type="checkbox" id="terms-agree" required>
+              <span>I agree to the <a href="./terms.html">Terms of Service</a> and <a href="./privacy-policy.html">Privacy Policy</a></span>
+            </label>
+            <p class="error-text" id="terms-error"></p>
+            <button class="btn btn-primary auth-btn" type="submit" style="margin-top:1rem">Create My Account</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast-container"></div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

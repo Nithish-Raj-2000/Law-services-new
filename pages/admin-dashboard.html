@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — STACKLY Law Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="admin-dashboard">
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a class="brand" href="../index.html" aria-label="STACKLY home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="../Images/logo.webp" alt="STACKLY Logo" width="120" height="80" loading="eager">
+          </span>
+          <!-- <span class="brand-copy"><span class="brand-name" style="font-size:.95rem">STACKLY</span><span class="brand-tagline">Admin Panel</span></span> -->
+        </a>
+        <button class="sidebar-close" aria-label="Close sidebar">✕</button>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <div class="nav-section-label">Main</div>
+          <a href="#overview" class="active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            Overview
+          </a>
+          <a href="#cases">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            All Cases
+            <span class="nav-badge">24</span>
+          </a>
+          <a href="#clients">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            Clients
+          </a>
+          <a href="#attorneys">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0112 0v2"/></svg>
+            Attorneys
+          </a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-label">Operations</div>
+          <a href="#schedule">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Schedule
+          </a>
+          <a href="#documents">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            Documents
+          </a>
+          <a href="#invoices">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            Invoices
+            <span class="nav-badge">5</span>
+          </a>
+          <a href="#analytics">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Analytics
+          </a>
+        </div>
+        <div class="nav-section">
+          <div class="nav-section-label">System</div>
+          <a href="#settings">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Settings
+          </a>
+          <a href="#" data-logout>
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+            Sign Out
+          </a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar" style="width:36px;height:36px;border-radius:50%;background:var(--gold-600);display:flex;align-items:center;justify-content:center;font-weight:700;color:#060a12;font-size:.85rem;flex-shrink:0">A</div>
+          <div class="sidebar-user-info">
+            <div class="name">Admin User</div>
+            <div class="role">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div class="dashboard-main">
+      <!-- Topbar -->
+      <header class="dashboard-topbar">
+        <button class="topbar-burger" aria-label="Toggle sidebar">☰</button>
+        <div class="topbar-title">Admin Dashboard</div>
+        <div class="topbar-search">
+          <span class="topbar-search-icon">🔍</span>
+          <input type="text" placeholder="Search cases, clients…" aria-label="Search">
+        </div>
+        <div class="topbar-actions">
+          <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" style="width:38px;height:38px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--border-subtle);font-size:14px"></button>
+          <button class="topbar-icon-btn" aria-label="Notifications">
+            🔔<span class="notif-dot"></span>
+          </button>
+          <button class="topbar-icon-btn" aria-label="Messages">✉</button>
+          <div class="topbar-avatar" title="Admin User" style="width:36px;height:36px;border-radius:50%;background:var(--gold-600);display:flex;align-items:center;justify-content:center;font-weight:700;color:#060a12;font-size:.9rem;flex-shrink:0;cursor:pointer">A</div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div class="dashboard-content">
+
+        <!-- Welcome Banner -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+          <div>
+            <h2 style="font-family:'Manrope',sans-serif;font-size:1.5rem;font-weight:800;margin-bottom:.25rem">Good morning, Admin</h2>
+            <p style="color:var(--text-muted);font-size:.875rem">Here's what's happening at STACKLY today — Tuesday, June 3, 2026</p>
+          </div>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+            <button class="btn btn-secondary btn-sm" onclick="window.location.href='./404.html'">📊 Export Report</button>
+            <button class="btn btn-primary btn-sm" onclick="window.location.href='./404.html'">+ New Case</button>
+          </div>
+        </div>
+
+        <!-- Stat Cards -->
+        <div class="stats-cards">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon gold">⚖️</div>
+              <span class="stat-card-badge badge-up">↑ 12%</span>
+            </div>
+            <div class="stat-card-value" style="color:var(--gold-400)">24</div>
+            <div class="stat-card-label">Active Cases</div>
+            <div class="stat-card-sub">6 filed this week</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon green">👥</div>
+              <span class="stat-card-badge badge-up">↑ 8%</span>
+            </div>
+            <div class="stat-card-value" style="color:var(--success)">148</div>
+            <div class="stat-card-label">Total Clients</div>
+            <div class="stat-card-sub">12 new this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon blue">💰</div>
+              <span class="stat-card-badge badge-up">↑ 22%</span>
+            </div>
+            <div class="stat-card-value" style="color:var(--info)">$2.4M</div>
+            <div class="stat-card-label">Revenue (YTD)</div>
+            <div class="stat-card-sub">Target: $3.2M</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon red">📋</div>
+              <span class="stat-card-badge badge-down">↓ 3</span>
+            </div>
+            <div class="stat-card-value" style="color:var(--error)">5</div>
+            <div class="stat-card-label">Pending Invoices</div>
+            <div class="stat-card-sub">$84,500 outstanding</div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <button class="quick-action-btn" onclick="window.location.href='./404.html'">
+            <div class="quick-action-icon">⚖️</div>
+            <span class="quick-action-label">New Case</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='./404.html'">
+            <div class="quick-action-icon">📅</div>
+            <span class="quick-action-label">Schedule</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='./404.html'">
+            <div class="quick-action-icon">💳</div>
+            <span class="quick-action-label">Invoice</span>
+          </button>
+          <button class="quick-action-btn" onclick="window.location.href='./404.html'">
+            <div class="quick-action-icon">📊</div>
+            <span class="quick-action-label">Report</span>
+          </button>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+          <!-- Revenue Chart -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <span class="panel-title">Revenue Overview</span>
+              <span class="chip">2026</span>
+            </div>
+            <div class="chart-placeholder">
+              <div class="chart-bar" style="height:45%"></div>
+              <div class="chart-bar" style="height:62%"></div>
+              <div class="chart-bar" style="height:38%"></div>
+              <div class="chart-bar" style="height:75%"></div>
+              <div class="chart-bar" style="height:55%"></div>
+              <div class="chart-bar" style="height:88%"></div>
+              <div class="chart-bar" style="height:70%" title="Current month"></div>
+              <div class="chart-bar" style="height:30%;opacity:.3"></div>
+              <div class="chart-bar" style="height:30%;opacity:.3"></div>
+              <div class="chart-bar" style="height:30%;opacity:.3"></div>
+              <div class="chart-bar" style="height:30%;opacity:.3"></div>
+              <div class="chart-bar" style="height:30%;opacity:.3"></div>
+            </div>
+            <div style="display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap">
+              <div style="font-size:.75rem;color:var(--text-muted)">Jan–Jun actual &nbsp;·&nbsp; Jul–Dec projected</div>
+              <div style="margin-left:auto;display:flex;gap:1rem">
+                <div><span style="font-size:.75rem;color:var(--text-muted)">Actual</span> <strong style="color:var(--gold-400)">$2.4M</strong></div>
+                <div><span style="font-size:.75rem;color:var(--text-muted)">Target</span> <strong>$3.2M</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Case Distribution -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <span class="panel-title">Case Distribution</span>
+              <a class="panel-action" href="#cases">View All</a>
+            </div>
+            <div class="donut-wrap">
+              <div class="donut"></div>
+              <div class="donut-legend">
+                <div class="legend-item"><span class="legend-dot" style="background:var(--gold-500)"></span>Corporate (70%)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:var(--success)"></span>Litigation (15%)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:var(--info)"></span>Compliance (10%)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:var(--error)"></span>Other (5%)</div>
+              </div>
+            </div>
+            <div class="progress-list" style="margin-top:1.25rem">
+              <div class="progress-item">
+                <div class="prog-header"><span class="prog-name">Corporate Law</span><span class="prog-value">70%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:70%"></div></div>
+              </div>
+              <div class="progress-item">
+                <div class="prog-header"><span class="prog-name">Litigation</span><span class="prog-value">15%</span></div>
+                <div class="progress-track"><div class="progress-fill green" style="width:15%"></div></div>
+              </div>
+              <div class="progress-item">
+                <div class="prog-header"><span class="prog-name">Compliance</span><span class="prog-value">10%</span></div>
+                <div class="progress-track"><div class="progress-fill blue" style="width:10%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cases Table + Activity -->
+        <div class="dashboard-grid">
+          <!-- Active Cases Table -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <span class="panel-title">Active Cases</span>
+              <a class="panel-action" href="#cases">Manage All →</a>
+            </div>
+            <div style="overflow-x:auto">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Case ID</th>
+                    <th>Client</th>
+                    <th>Type</th>
+                    <th>Attorney</th>
+                    <th>Status</th>
+                    <th>Next Hearing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>#ST-2026-001</strong></td>
+                    <td>NorthPeak Capital</td>
+                    <td>M&A Advisory</td>
+                    <td>M. Holden</td>
+                    <td><span class="status-pill active">Active</span></td>
+                    <td>Jun 10, 2026</td>
+                  </tr>
+                  <tr>
+                    <td><strong>#ST-2026-002</strong></td>
+                    <td>TechBridge Global</td>
+                    <td>Arbitration</td>
+                    <td>S. Merritt</td>
+                    <td><span class="status-pill active">Active</span></td>
+                    <td>Jun 15, 2026</td>
+                  </tr>
+                  <tr>
+                    <td><strong>#ST-2026-003</strong></td>
+                    <td>HelixCorp Ltd</td>
+                    <td>Compliance</td>
+                    <td>A. Osei</td>
+                    <td><span class="status-pill pending">Pending</span></td>
+                    <td>Jun 22, 2026</td>
+                  </tr>
+                  <tr>
+                    <td><strong>#ST-2026-004</strong></td>
+                    <td>Meridian Finance</td>
+                    <td>Corporate Law</td>
+                    <td>D. Chen</td>
+                    <td><span class="status-pill active">Active</span></td>
+                    <td>Jul 3, 2026</td>
+                  </tr>
+                  <tr>
+                    <td><strong>#ST-2026-005</strong></td>
+                    <td>BlueStream Inc.</td>
+                    <td>Litigation</td>
+                    <td>M. Holden</td>
+                    <td><span class="status-pill closed">Closed</span></td>
+                    <td>—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Activity Feed -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <span class="panel-title">Recent Activity</span>
+              <button class="btn btn-ghost btn-sm">Clear All</button>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-dot gold"></div>
+                <div class="activity-text"><strong>New case filed</strong> — #ST-2026-006 (DataVault Corp) assigned to Sophia Merritt</div>
+                <div class="activity-time">2h ago</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-dot green"></div>
+                <div class="activity-text"><strong>Invoice paid</strong> — $22,500 from TechBridge Global (INV-0041)</div>
+                <div class="activity-time">4h ago</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-dot blue"></div>
+                <div class="activity-text"><strong>Consultation booked</strong> — Elena Vasquez scheduled for June 7 at 2pm</div>
+                <div class="activity-time">5h ago</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-dot red"></div>
+                <div class="activity-text"><strong>Deadline alert</strong> — Filing deadline for #ST-2026-002 is in 3 days</div>
+                <div class="activity-time">6h ago</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-dot gold"></div>
+                <div class="activity-text"><strong>Document uploaded</strong> — Merger agreement draft added to NorthPeak Capital case</div>
+                <div class="activity-time">Yesterday</div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-dot green"></div>
+                <div class="activity-text"><strong>Case resolved</strong> — #ST-2026-005 (BlueStream Inc.) closed successfully</div>
+                <div class="activity-time">Yesterday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calendar + Notifications -->
+        <div class="dashboard-grid">
+          <!-- Calendar -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <span class="panel-title">Firm Calendar</span>
+              <a class="panel-action" href="#schedule">Full Schedule</a>
+            </div>
+            <div class="mini-calendar">
+              <div class="cal-header">
+                <button class="cal-prev">‹</button>
+                <span class="cal-month-label">June 2026</span>
+                <button class="cal-next">›</button>
+              </div>
+              <div class="cal-grid">
+                <div class="day-label">Su</div><div class="day-label">Mo</div><div class="day-label">Tu</div><div class="day-label">We</div><div class="day-label">Th</div><div class="day-label">Fr</div><div class="day-label">Sa</div>
+                <!-- 42 day slots -->
+                <div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div>
+                <div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div>
+                <div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div>
+                <div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div>
+                <div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div>
+                <div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div><div class="day"></div>
+              </div>
+            </div>
+            <div class="events-list">
+              <div class="event-item">
+                <div class="event-date"><div class="month">JUN</div><div class="day-num">7</div></div>
+                <div class="event-info"><div class="title">Client Consultation — E. Vasquez</div><div class="meta">2:00 PM · Zoom · M. Holden</div></div>
+              </div>
+              <div class="event-item">
+                <div class="event-date"><div class="month">JUN</div><div class="day-num">10</div></div>
+                <div class="event-info"><div class="title">Hearing — NorthPeak Capital</div><div class="meta">10:00 AM · NY Courts · M. Holden</div></div>
+              </div>
+              <div class="event-item">
+                <div class="event-date"><div class="month">JUN</div><div class="day-num">15</div></div>
+                <div class="event-info"><div class="title">ICC Arbitration Session — TechBridge</div><div class="meta">9:00 AM · London · S. Merritt</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <span class="panel-title">Notifications</span>
+              <span class="chip">8 unread</span>
+            </div>
+            <div class="notif-list">
+              <div class="notif-item unread">
+                <img class="notif-avatar" src="https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Sophia">
+                <div class="notif-body"><div class="msg"><strong>Sophia Merritt</strong> uploaded 3 new documents to TechBridge arbitration case</div><div class="time">10 min ago</div></div>
+              </div>
+              <div class="notif-item unread">
+                <img class="notif-avatar" src="https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=80" alt="James">
+                <div class="notif-body"><div class="msg"><strong>James Thornton</strong> (NorthPeak Capital) sent a new message regarding the merger timeline</div><div class="time">1h ago</div></div>
+              </div>
+              <div class="notif-item">
+                <img class="notif-avatar" src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=80" alt="David">
+                <div class="notif-body"><div class="msg"><strong>David Chen</strong> completed the due diligence review for Meridian Finance</div><div class="time">3h ago</div></div>
+              </div>
+              <div class="notif-item unread">
+                <img class="notif-avatar" src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=80" alt="Amara">
+                <div class="notif-body"><div class="msg">⚠️ <strong>Compliance Alert</strong> — GDPR audit deadline for HelixCorp is in 7 days</div><div class="time">4h ago</div></div>
+              </div>
+            </div>
+            <div style="padding:1rem;border-top:1px solid var(--border-subtle)">
+              <a class="panel-action" href="#">View all notifications →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Clients -->
+        <div class="dashboard-panel" style="margin-bottom:2rem">
+          <div class="panel-header">
+            <span class="panel-title">Recent Clients</span>
+            <div style="display:flex;gap:.75rem;align-items:center">
+              <input class="input" type="text" placeholder="Search clients…" style="width:200px;padding:.35rem .75rem;font-size:.8rem">
+              <a class="panel-action" href="#clients">View All</a>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Company</th>
+                  <th>Cases</th>
+                  <th>Status</th>
+                  <th>Joined</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="display:flex;align-items:center;gap:.75rem"><img src="https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=60" style="width:36px;height:36px;border-radius:50%;object-fit:cover" alt="James"> James Thornton</td>
+                  <td>NorthPeak Capital</td>
+                  <td><span class="chip">3 active</span></td>
+                  <td><span class="status-pill active">Active</span></td>
+                  <td>Jan 2024</td>
+                  <td><button class="btn btn-ghost btn-sm" onclick="window.location.href='./404.html'">View</button></td>
+                  <td style="display:flex;align-items:center;gap:.75rem"><img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=60&fm=webp" style="width:36px;height:36px;border-radius:50%;object-fit:cover" alt="Elena"> Elena Vasquez</td>
+                  <td>TechBridge Global</td>
+                  <td><span class="chip">1 active</span></td>
+                  <td><span class="status-pill active">Active</span></td>
+                  <td>Mar 2025</td>
+                  <td><button class="btn btn-ghost btn-sm" onclick="window.location.href='./404.html'">View</button></td>
+                </tr>
+                <tr>
+                  <td style="display:flex;align-items:center;gap:.75rem"><img src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=60&fm=webp" style="width:36px;height:36px;border-radius:50%;object-fit:cover" alt="Michael"> Michael Roberts</td>
+                  <td>HelixCorp Ltd</td>
+                  <td><span class="chip">2 active</span></td>
+                  <td><span class="status-pill pending">Pending</span></td>
+                  <td>Nov 2023</td>
+                  <td><button class="btn btn-ghost btn-sm" onclick="window.location.href='./404.html'">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
