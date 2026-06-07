@@ -76,37 +76,28 @@ function highlightNav() {
 }
 highlightNav();
 
-// ── Build sidebar content (injected once) ────────────────
-(function buildSidebar() {
+
+// ── Inject mobile sidebar header + auth buttons (once) ───
+(function buildMobileSidebar() {
   const nav = document.querySelector('.nav-links');
-  if (!nav || nav.querySelector('.sidebar-nav-header')) return;
+  if (!nav || nav.querySelector('.mob-sidebar-header')) return;
 
   const actions = document.querySelector('.nav-actions');
-  const loginHref  = actions?.querySelector('a[href*="login"]')?.getAttribute('href')  || './login.html';
-  const signupHref = actions?.querySelector('a[href*="signup"]')?.getAttribute('href') || './signup.html';
+  const loginHref  = actions?.querySelector('a[href*="login"]')?.getAttribute('href')  || './pages/login.html';
+  const signupHref = actions?.querySelector('a[href*="signup"]')?.getAttribute('href') || './pages/signup.html';
 
-  // Top header bar
+  // Header: X close button only
   const header = document.createElement('div');
-  header.className = 'sidebar-nav-header';
-  header.innerHTML =
-    '<button class="sidebar-nav-back" aria-label="Go back">&#8592; Back</button>' +
-    '<span class="sidebar-nav-title">STACKLY</span>' +
-    '<button class="sidebar-nav-close" aria-label="Close">&#x2715;</button>';
+  header.className = 'mob-sidebar-header';
+  header.innerHTML = '<button class="mob-sidebar-close sidebar-nav-close" aria-label="Close menu">&#x2715;</button>';
   nav.insertBefore(header, nav.firstChild);
 
-  // "Menu" label
-  const menuLabel = document.createElement('span');
-  menuLabel.className = 'sidebar-section-label';
-  menuLabel.textContent = 'Menu';
-  nav.insertBefore(menuLabel, header.nextSibling);
-
-  // Login + Sign Up at bottom
+  // Login + Sign Up pinned at bottom
   const auth = document.createElement('div');
-  auth.className = 'sidebar-auth-section';
+  auth.className = 'mob-sidebar-auth';
   auth.innerHTML =
-    '<span class="sidebar-section-label" style="padding:0 0 0.6rem;border:none;">Account</span>' +
-    '<a href="' + loginHref  + '" class="sidebar-auth-btn login">Login</a>' +
-    '<a href="' + signupHref + '" class="sidebar-auth-btn signup">Sign Up</a>';
+    '<a href="' + loginHref  + '" class="btn btn-secondary btn-sm mob-auth-btn">Login</a>' +
+    '<a href="' + signupHref + '" class="btn btn-primary  btn-sm mob-auth-btn">Sign Up</a>';
   nav.appendChild(auth);
 })();
 
@@ -303,9 +294,29 @@ function getSelectedRole() {
 // ── Login Form (navigates to dashboard) ───────────────────
 const loginForm = document.getElementById('login-form');
 if (loginForm) {
+  const rememberBox = loginForm.querySelector('#remember-me');
+  const rememberErr = document.getElementById('remember-error');
+
+  // Reset email and checkbox to blank/unchecked on every page load
+  const emailInput = loginForm.querySelector('#login-email');
+  if (emailInput) emailInput.value = '';
+  if (rememberBox) rememberBox.checked = false;
+
+  if (rememberBox) {
+    rememberBox.addEventListener('change', () => {
+      if (rememberBox.checked && rememberErr) rememberErr.textContent = '';
+    });
+  }
+
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateAuthForm(loginForm)) return;
+    if (rememberBox && !rememberBox.checked) {
+      if (rememberErr) rememberErr.textContent = 'Please check "Remember me" to continue.';
+      rememberBox.focus();
+      return;
+    }
+    if (rememberErr) rememberErr.textContent = '';
     const role = getSelectedRole();
     const btn = loginForm.querySelector('button[type="submit"]');
     const orig = btn.textContent;

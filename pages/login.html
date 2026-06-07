@@ -37,13 +37,11 @@
       <div class="nav-actions">
         <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
         <a class="btn btn-primary btn-sm" href="./signup.html">Sign Up</a>
-        <a class="btn btn-outline btn-sm" href="./contact.html">Book Consultation</a>
       </div>
     </div>
   </header>
 
   <main id="main" class="auth-page">
-    <a class="auth-back-btn" href="../index.html">← Back to Home</a>
     <div class="container" style="width:100%">
       <div class="auth-grid">
         <!-- Visual Side -->
@@ -64,6 +62,7 @@
 
         <!-- Form Side -->
         <div class="auth-form-panel">
+          <a class="auth-back-btn" href="../index.html">← Back to Home</a>
           <div class="auth-form-header">
             <h1>Sign In</h1>
             <p>Don't have an account? <a href="./signup.html">Create one free</a></p>
@@ -97,7 +96,7 @@
               <label class="form-label" for="login-email">Email Address <span class="req">*</span></label>
               <div class="input-icon-wrapper">
                 <span class="field-icon">✉</span>
-                <input class="input" type="email" id="login-email" name="email" placeholder="you@example.com" required data-required autocomplete="email">
+                <input class="input" type="email" id="login-email" name="email" placeholder="you@example.com" required data-required autocomplete="off">
               </div>
               <p class="error-text"></p>
             </div>
@@ -110,13 +109,14 @@
               </div>
               <p class="error-text"></p>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.35rem">
               <label class="form-check" style="margin:0">
                 <input type="checkbox" id="remember-me">
                 <span>Remember me</span>
               </label>
               <a href="./404.html" style="font-size:var(--text-sm);color:var(--gold-500);font-weight:600">Forgot password?</a>
             </div>
+            <p id="remember-error" style="font-size:.75rem;color:#e63946;min-height:1.1rem;margin:0 0 .75rem;"></p>
             <button class="btn btn-primary auth-btn" type="submit">Sign In to Dashboard</button>
             <div class="auth-divider"><span>or continue with</span></div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
