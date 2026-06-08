@@ -318,6 +318,8 @@ if (loginForm) {
     }
     if (rememberErr) rememberErr.textContent = '';
     const role = getSelectedRole();
+    const userEmail = loginForm.querySelector('#login-email').value.trim();
+    localStorage.setItem('stackly-user-email', userEmail);
     const btn = loginForm.querySelector('button[type="submit"]');
     const orig = btn.textContent;
     btn.disabled = true; btn.textContent = 'Signing in…';
@@ -503,10 +505,29 @@ document.querySelectorAll('.quick-action-btn').forEach(btn => {
   });
 });
 
+// ── Show login email on dashboards ───────────────────────
+(function injectUserEmail() {
+  const email = localStorage.getItem('stackly-user-email');
+  if (!email) return;
+  const roleEl = document.querySelector('.sidebar-user-info .role');
+  if (roleEl && !roleEl.nextElementSibling?.classList.contains('user-email')) {
+    const el = document.createElement('div');
+    el.className = 'user-email';
+    el.textContent = email;
+    el.style.cssText = 'font-size:.78rem;color:var(--text-secondary);margin-top:.2rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px;';
+    roleEl.after(el);
+  }
+  const avatar = document.querySelector('.topbar-avatar');
+  if (avatar) avatar.setAttribute('title', email);
+})();
+
 // ── Logout ────────────────────────────────────────────────
 document.querySelectorAll('[data-logout]').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    if (confirm('Sign out of your account?')) { window.location.href = '../pages/login.html'; }
+    if (confirm('Sign out of your account?')) {
+      localStorage.removeItem('stackly-user-email');
+      window.location.href = '../pages/login.html';
+    }
   });
 });
